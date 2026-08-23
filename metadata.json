@@ -1,0 +1,6 @@
+{
+  "name": "PyHacker",
+  "description": "AI Engine & Python Coding Tutor, Code Judge, Debugger, and Ethical Hacking Assistant in Bangla & English.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
