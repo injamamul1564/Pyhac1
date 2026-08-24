@@ -59,15 +59,16 @@ jobs:
       # --------------------------------------------------
       # 5. Make Gradle executable
       # --------------------------------------------------
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
+   - name: Setup Gradle
+  uses: gradle/actions/setup-gradle@v4
+  with:
+    gradle-version: "8.10.2"
+
+- name: Build Debug APK
+  run: gradle assembleDebug --stacktrace
 
 
-      # --------------------------------------------------
-      # 6. Build Debug APK
-      # --------------------------------------------------
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+    
 
 
       # --------------------------------------------------
