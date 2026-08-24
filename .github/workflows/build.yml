@@ -19,22 +19,25 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
-    - name: Ensure Gradle Wrapper Exists
+    - name: Setup Compatible Gradle 8.7
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.7'
+
+    - name: Generate Compatible Gradle Wrapper
       run: |
-        if [ ! -f "gradlew" ]; then
-          gradle wrapper
-        fi
+        gradle wrapper --gradle-version 8.7 --distribution-type bin
         chmod +x gradlew
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug --no-daemon --stacktrace
+      run: ./gradlew assembleDebug --stacktrace
 
-    - name: Upload APK Artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: Pyhack-App-Debug
-        path: app/build/outputs/apk/**/*.apk
+        path: app/build/outputs/apk/debug/*.apk
