@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example"
+    namespace = "com.aistudio.pyhacker.k9v2"
 
     compileSdk = 36
 
